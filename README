@@ -1,0 +1,15 @@
+精品课接口自动化-jmeter脚本:
+1、course_app_Test是ns014测试环境的主站case，接口比较全，用例114条。
+jenkins的项目为http://ke-jenkins.corp.youdao.com/view/%E7%B2%BE%E5%93%81%E8%AF%BE%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96/job/courseapp-autotest，详细操作可参见具体配置。
+2、coursewebTest是线上环境的主站case，用例50条，是一些适用于主站的接口case。
+jenkins项目为http://ke-jenkins.corp.youdao.com/view/%E7%B2%BE%E5%93%81%E8%AF%BE%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96/job/courseweb-autotest，详细操作可参见具体配置。
+3、course_live_Test是直播服务的线上case，用例85条。（目前由海艳负责，本处代码已过期）
+jenkins项目为http://ke-jenkins.corp.youdao.com/view/%E7%B2%BE%E5%93%81%E8%AF%BE%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96/job/course-live-autotest/
+4、course_tiku_Test是题库服务的线上case，因为题库目前内容还少，用例12条。
+jenkins项目为http://ke-jenkins.corp.youdao.com/view/%E7%B2%BE%E5%93%81%E8%AF%BE%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96/job/course-tiku-autotest/
+5、另外还有tab服务的接口自动化代码，由海艳和景宇负责，不在本处。
+6、hibernate.cfg.xml.offline是测试环境自动部署用的，保证测试环境用的是lsa_test的数据库数据。
+7、mysql-connector-java.jar是测试case里数据库操作必须的，要把它放到jmeter的lib目录下。
+8、build.xml是构建jacoco，查看接口自动化用例覆盖情况的脚本，目前暂时不用了。因为jacoco跟resin里的主站环境搭建冲突。
+9、网易登录jar包是使用acc/login登录有道账号用的jar包。目前只用在tiku的接口自动化中，需要将jar包中的所有jar文件放到jmeter的lib目录下。
+10、jmeter.ruesults.han.xsl是接口自动化结果详情页的模板内容。

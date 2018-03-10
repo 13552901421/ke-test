@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<project name="testExec" xmlns:jacoco="antlib:org.jacoco.ant" default="auto_report">
+    <!--value为server服务所在机器 -->
+    <property name="test.server.host" value="127.0.0.1" />
+    <!--要测试的源码src目录 -->
+    <property name="src.dir" value="/disk3/jenkins_dir/courseweb/trunk/src/java" />
+    <!--要测试的源码build目录 -->
+    <property name="build.classes" value="//disk3/jenkins_dir/courseweb/trunk/build/classes" />
+    <!--jacoco地址 -->
+    <property name="jacoco.dir" value="/disk1/jenkins/jacoco/lib" />
+    <!--jacoco dump结果文件地址 -->
+    <property name="jacoco.result.dir" value="/disk1/jenkins/jobs/workspace/interfaceAutoTest/course-app/jacoco" />
+    <!--节点机上也要放jacoco的包，path为jacoco的安装路径-->
+    <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+        <classpath path="${jacoco.dir}/jacocoant.jar" />
+    </taskdef>
+    <target name="clean_exec">
+        <delete file="${jacoco.result.dir}/rds.exec" />
+        <!--需要先把之前的文件删除-->
+    </target>
+    <target name="dump">
+        <!--port为之前server端tomcat服务打开的端口，要和上面配置的一样-->
+        <!--destfile指定生成的文件地址-->
+        <jacoco:dump address="${test.server.host}" port="19472" reset="true" destfile="${jacoco.result.dir}/rds.exec" />
+    </target>
+    <target name="report">
+        <!-- 下面的脚本用来生成html测试报告  -->
+        <jacoco:report>
+            <executiondata>
+                <file file="${jacoco.result.dir}/rds.exec" />
+            </executiondata>
+            <structure name="jacoco_demo">
+                <classfiles>
+                    <fileset dir="${build.classes}" />
+                </classfiles>
+                <sourcefiles encoding="UTF-8">
+                    <fileset dir="${src.dir}" />
+                </sourcefiles>
+            </structure>
+            <html destdir="${jacoco.result.dir}" />
+        </jacoco:report>
+    </target>
+    <target name="auto_report" depends="clean_exec,dump,report" />
+</project>

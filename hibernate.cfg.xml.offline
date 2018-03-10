@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://nc008x.corp.youdao.com:3306/lsa_test</property>
+        <property name="hibernate.connection.username">eadonline4nb</property>
+        <property name="hibernate.connection.password">new1ife4Th1sAugust</property>
+        <property name="show_sql">false</property>
+        <property name="Connection.useUnicode">true</property>
+        <property name="connection.characterEncoding">utf-8</property>
+        <property name="hibernate.connection.pool_size">500</property>
+        <property name="jdbc.fetch_size">50</property>
+        <property name="jdbc.batch_size">100</property>
+        <property name="hiberante.cache.use_second_level_cache">false</property>         
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>       
+        <property name="hibernate.jdbc.use_get_generated_keys">true</property>
+        <property name="hibernate.connection.isolation">2</property>
+
+        <!-- c3p0的配置 -->
+        <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+        <property name="c3p0.min_size">5</property>
+        <property name="c3p0.max_size">20</property>
+        <property name="c3p0.timeout">5000</property>
+        <property name="c3p0.idle_test_period">120</property>
+        <property name="c3p0.acquire_increment">30</property>
+        <property name="c3p0.max_statements">100</property>
+        <property name="hibernate.c3p0.acquire_increment">2</property>
+        <property name="hibernate.c3p0.validate">false</property>
+        <property name="maxIdleTime">600</property>  <!--最大空闲时间,600秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+        <property name="idleConnectionTestPeriod">600</property><!--每600秒检查所有连接池中的空闲连接。Default: 0 -->
+        
+        <!-- 主要表 -->        
+        <mapping class="course.storage.bean.CategoryEntity"/>
+        <mapping class="course.storage.bean.SubCategoryEntity"/>        
+        <mapping class="course.storage.bean.CourseInfoEntity"/>
+        <mapping class="course.storage.bean.IndexPageEntity"/>  
+        <mapping class="course.storage.bean.CourseOrdersEntity"/>
+        <mapping class="course.storage.bean.PromotionEntity"/>
+        <mapping class="course.storage.bean.LotteryPromotionEntity"/>                                   
+        <mapping class="course.storage.bean.CourseStaticEntity"/>
+        <mapping class="course.storage.bean.CardTeaEntity"/>  
+        <mapping class="course.storage.bean.LogisticsOrderEntity"/>
+        <mapping class="course.storage.bean.PromotionActEntity"/>
+        <mapping class="course.storage.bean.PromotionActSuveryAnsEntity"/>
+        <mapping class="course.storage.bean.CourseTagEntity"/>
+        <mapping class="course.storage.bean.CourseSalePromotion"/> 
+        <mapping class="course.storage.bean.CoursePackageEntity"/>
+        <mapping class="course.storage.bean.CourseSurveyEntity"/>
+        <mapping class="course.storage.bean.IOSReceiptEntity"/>
+        <mapping class="course.storage.bean.CourseLessonEntity"/>
+        <mapping class="course.storage.bean.FileUploadInfoEnity"/>
+        <mapping class="course.storage.bean.PrePayEntity"/>
+        <mapping class="course.storage.bean.SendItemEntity"/>
+        <mapping class="course.storage.bean.UserCategoryWeightEntity"/>
+        
+        <!-- 优惠相关的表 -->
+        <mapping class="course.storage.bean.CouponEntity"/>
+        <mapping class="course.storage.bean.CouponCodeEntity"/>
+
+        <!-- 砍价活动 -->
+		<mapping class="course.storage.bean.CutPriceEntity"/>
+		
+        <!--四六级抽奖活动-->
+        <mapping class="course.storage.bean.LotteryCetPrizeEntity"/>
+        <mapping class="course.storage.bean.LotteryCetUserEntity"/>
+
+        <!-- 关联课程表 -->
+        <mapping class="course.storage.bean.CourseRelationEntity"/>
+
+        <!-- 反馈 -->
+        <mapping class="course.storage.bean.FeedbackEntity"/>
+
+        <!-- 评论 -->
+        <mapping class="course.comment.bean.CommentEntity"/>
+
+        <!-- 微信关系映射 -->
+        <mapping class="course.wexin.storage.WeixinIdMap"/>
+
+        <!--url重定向-->
+        <mapping class="course.storage.bean.UrlMapEntity"/>
+        
+        <!--3.0tab系统相关表-->
+        <mapping class="course.storage.bean.Course3ContentTalkEntity" />
+    </session-factory>
+</hibernate-configuration>
